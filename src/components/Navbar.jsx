@@ -1,5 +1,6 @@
 'use client';
 import { signOut, useSession } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
 import Link from "next/link";
 
 
@@ -31,10 +32,16 @@ const Navbar = () => {
                     <div>
                         {user ? <>
                             <p>Welcome, {user.name}!</p>
-                            <button
+                            <Button
+                                variant="danger"
                                 onClick={() => signOut()}
-                            >signOut</button>
-                        </> : <Link href="/auth/signin">Sign In</Link>}
+                            >SignOut</Button>
+                        </> : <Button variant="secondary"><Link href="/auth/signin">Sign In</Link></Button>
+                        }
+
+                        <Button variant="primary" className="text-black ml-2">
+                            <Link href="/auth/signup">Sign Up</Link>
+                        </Button>
                     </div>
                 </header>
             </nav>
