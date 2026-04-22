@@ -3,11 +3,12 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const client = new MongoClient(process.env.AUTH_DB_URI);
-const db = client.db();
+const db = client.db('better-auth-db');
 
 export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
+        // requireEmailVerification: true, 
     },
     database: mongodbAdapter(db, {
         // Optional: if you don't provide a client, database transactions won't be enabled.
@@ -15,3 +16,11 @@ export const auth = betterAuth({
     }),
     //...
 });
+
+
+/**
+ * 1. Better auth: install 
+ * 2. env variables: 
+ *   - BETTER_AUTH_SECRET
+ *  - BETTER_AUTH_URL
+*/
