@@ -18,7 +18,7 @@ const SignInPage = () => {
             rememberMe: true,
             callbackURL: '/dashboard'
         })
-        console.log("Sign in response:", { data, error })
+        console.log("Sign in response: ", { data, error })
     }
 
     return (
